@@ -52,8 +52,15 @@ void some_func (wchar_t* snt) {
         }
     }
     
-    int i = 0;
-
+    int i, j = 0;
+    while(i < arr_len) {
+        wcscpy(new_snt+j, cp_arr[i]);
+        i ++;
+        j += wcslen(cp_arr[i]);
+    }
+    
+    /* тут надо заменить snt в структуре на new_snt  и освободить память */
+}
 /*
 дальше можно использовать wcstok, чтобы разбить его на слова
 их можно записывать в массив
