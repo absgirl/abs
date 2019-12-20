@@ -36,11 +36,23 @@ void some_func (wchar_t* snt) {
     wchar_t *p, *tmp = NULL;
     p = wcstok(p, " ,.", tmp);
     while (p) {
-        some_arr[arr_len] = malloc(sizeof(wchar_t)*(wcslen(p)+2));
+        some_arr[arr_len] = malloc(sizeof(wchar_t)*(wcslen(p)+20));
         wcscpy(some_arr[arr_len++], p);
         p = wcstok(p, " ,.", tmp);
     }
-}
+    wchar_t **cp_arr = malloc(sizeof(wchar_t*)*wcslen(snt));
+    qsort(cp_arr, arr_len, sizeof(wchar_t*), w_cmp);
+    
+    for (int i = 0; i <arr_len; i++) {
+        if (!wcscmp(some_arr[i], cp_arr[i])) {
+            wchar_t* tmp = malloc (sizeof(wchar_t)*strlen(cp_arr[i]));
+            wcscpy(tmp, /*тэг цвета*/);
+            wcscpy(tmp+wcslen("тэг цвета "), cp_arr[i]);
+            wcacpy(tmp+wcslen("тэг цвета ")+wcslen(cp_arr[i]), "закрыть тэг цвета");
+        }
+    }
+    
+    int i = 0;
 
 /*
 дальше можно использовать wcstok, чтобы разбить его на слова
